@@ -15,7 +15,7 @@ namespace MxWs
 {
     class Server
     {
-        public static string version = ThisAssembly.Git.Commit;
+        public static string version = "3.1.1";
         public static bool debug = false;
         public static bool serverLoop = true;
         public static bool indexBool = false;
@@ -27,6 +27,7 @@ namespace MxWs
         // Settings Variables
         // Values are set by ReadSettings() during "init" state.
         public static string settings_apiKey = ""; // Store the Blizzard Dev API Key
+        public static string settings_apiSecret = ""; // Store the Blizzard Dev API Secret
         public static string settings_dbname = ""; // Store the MySQL Database Name
         public static string settings_dbhost = ""; // Store the MySQL Database Host
         public static string settings_dbuser = ""; // Store the MySQL Database User

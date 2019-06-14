@@ -18,6 +18,7 @@ namespace MxWs.JSON
     public class SETTINGS
     {
         public string apikey { get; set; }
+        public string apisecret { get; set; }
         public string dbname { get; set; }
         public string dbhost { get; set; }
         public string dbuser { get; set; }
@@ -33,6 +34,8 @@ namespace MxWs.JSON
             SETTINGS j = JsonConvert.DeserializeObject<SETTINGS>(File.ReadAllText("settings.json"));
             Server.settings_apiKey = j.apikey;
             Utilities.MSG.CMW(string.Format("APIKey: {0}", j.apikey), true, 1);
+            Server.settings_apiSecret = j.apisecret;
+            Utilities.MSG.CMW(string.Format("APISecret: {0}", j.apisecret), true, 1);
             Server.settings_dbname = j.dbname;
             Utilities.MSG.CMW(string.Format("DB Name: {0}", j.dbname), true, 1);
             Server.settings_dbhost = j.dbhost;

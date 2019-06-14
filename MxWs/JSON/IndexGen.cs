@@ -112,7 +112,6 @@ namespace MxWs.JSON
             }
             sb.Append(string.Join(",", Rows));
             sb.Append(";");
-            Utilities.MSG.CMW(sb.ToString(), true, 1);
             InsertIndex(sb.ToString());
         }       
 

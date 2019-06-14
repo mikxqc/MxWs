@@ -32,10 +32,12 @@ namespace MxWs.JSON
 
         public static string GetURL(string region, string realm, string api)
         {
+            string token = Utilities.OAuth.GetOAuth(Server.settings_apiKey, Server.settings_apiSecret);
             using (WebClient wc = new WebClient())
             {
+                ServicePointManager.ServerCertificateValidationCallback += (p1, p2, p3, p4) => true;
                 ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
-                var json = wc.DownloadString(@"https://" + Server.region + ".api.battle.net/wow/auction/data/" + Server.realm + "?locale=en_US&apikey=" + Server.settings_apiKey);
+                var json = wc.DownloadString($@"https://{Server.region}.api.blizzard.com/wow/auction/data/{Server.realm}?locale=en_US&access_token={token}");
                 RootObject j = JsonConvert.DeserializeObject<RootObject>(json);
                 return j.files[0].url;
             }

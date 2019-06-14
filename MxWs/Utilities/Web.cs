@@ -20,6 +20,9 @@ namespace MxWs.Utilities
         {
             using (WebClient wc = new WebClient())
             {
+                ServicePointManager
+    .ServerCertificateValidationCallback +=
+    (sender, cert, chain, sslPolicyErrors) => true;
                 wc.DownloadFile(url, file);
             }
         }
