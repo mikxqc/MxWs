@@ -64,6 +64,7 @@
     <Compile Include="JSON\AHUrl.cs" />
     <Compile Include="JSON\IndexGen.cs" />
     <Compile Include="JSON\Settings.cs" />
+    <Compile Include="JSON\SpecialGen.cs" />
     <Compile Include="Utilities\DB.cs" />
     <Compile Include="Utilities\IO.cs" />
     <Compile Include="Utilities\MSG.cs" />

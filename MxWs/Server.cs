@@ -19,10 +19,12 @@ namespace MxWs
         public static bool debug = false;
         public static bool serverLoop = true;
         public static bool indexBool = false;
+        public static bool specialBool = false;
 
         public static string st = "init";
         public static string dumpID = "";
         public static string indexString = "";
+        public static string specialString = "";
 
         // Settings Variables
         // Values are set by ReadSettings() during "init" state.
@@ -61,6 +63,14 @@ namespace MxWs
                         indexBool = true;
                         int ini = Array.IndexOf(args, "--index");
                         indexString = args[ini + 1];
+
+                    }
+                    // Special Arg Logic
+                    if (args.Contains("--special"))
+                    {
+                        specialBool = true;
+                        int ini = Array.IndexOf(args, "--special");
+                        specialString = args[ini + 1];
 
                     }
                     // SkipDump Arg Logic
@@ -123,6 +133,18 @@ namespace MxWs
                         case "gen_index":
                             Utilities.MSG.CMW("Generating the index table...", true, 1);
                             JSON.IndexGen.GenIndex(dumpID, indexString);
+                            if (specialBool)
+                            {
+                                st = "gen_special";
+                            }
+                            else
+                            {
+                                st = "clean";
+                            }
+                            break;
+                        case "gen_special":
+                            Utilities.MSG.CMW("Generating the special table...", true, 1);
+                            JSON.SpecialGen.GenSpecial(dumpID, specialString);
                             st = "clean";
                             break;
                         case "clean":

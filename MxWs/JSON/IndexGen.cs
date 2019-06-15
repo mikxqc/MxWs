@@ -48,7 +48,7 @@ namespace MxWs.JSON
             int itemid = 0;
             foreach (var e in ind)
             {              
-                RootObject j = JsonConvert.DeserializeObject<RootObject>(File.ReadAllText(string.Format("index_{0}.json",e)));
+                RootObject j = JsonConvert.DeserializeObject<RootObject>(File.ReadAllText(string.Format("json/index_{0}.json",e)));
                 if(j.Misc.Count > 0)
                 {
                     foreach (var d in j.Misc)
